@@ -1,0 +1,58 @@
+ //完善排序功能（if排序分相等）
+ void sort_ft()
+{
+    int i,j;
+    int sjs;//抽签
+    struct footb_team temp;
+    srand(time(NULL));
+    for(i=1;i<=n;i++)
+    ft[i].pxf=ft[i].jf+ft[i].zjqs*0.01+ft[i].jsqs*0.0001;
+    for(i=1;i<=n-1;i++)
+    {
+        for(j=1;j<=n-i;j++)
+        {
+            if(ft[j].pxf<ft[j+1].pxf)
+            {
+                temp=ft[j];
+                ft[j]=ft[j+1];
+                ft[j+1]=temp;
+            }
+            else if(ft[j].pxf==ft[j+1].pxf)
+            {
+                sjs=(rand()%90+10)%2;
+                printf("%d\n",sjs);
+                if(sjs==1)
+                {
+                    temp=ft[j];
+                    ft[j]=ft[j+1];
+                    ft[j+1]=temp;
+                }
+            }
+        }
+    }
+    printf("球队名\t积分\t排名\t总进球\t净胜球\n");
+    for(i=1;i<=n;i++)
+    printf("%s\t%d\t%d\t%d\t%d\n",ft[i].name,ft[i].jf,i,ft[i].zjqs,ft[i].jsqs);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
